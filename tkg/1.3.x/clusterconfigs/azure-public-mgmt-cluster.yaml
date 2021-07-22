@@ -1,0 +1,113 @@
+#! ---------------------------------------------------------------------
+#! Basic cluster creation configuration
+#! ---------------------------------------------------------------------
+
+CLUSTER_NAME: public-mgmt-cluster
+CLUSTER_PLAN: dev
+INFRASTRUCTURE_PROVIDER: azure
+ENABLE_CEIP_PARTICIPATION: false
+# TMC_REGISTRATION_URL:
+ENABLE_AUDIT_LOGGING: true
+CLUSTER_CIDR: 100.96.0.0/11
+SERVICE_CIDR: 100.64.0.0/13
+
+#! ---------------------------------------------------------------------
+#! Image repository configuration
+#! ---------------------------------------------------------------------
+
+# TKG_CUSTOM_IMAGE_REPOSITORY: ""
+# TKG_CUSTOM_IMAGE_REPOSITORY_CA_CERTIFICATE: ""
+
+#! ---------------------------------------------------------------------
+#! Proxy configuration
+#! ---------------------------------------------------------------------
+
+# TKG_HTTP_PROXY: ""
+# TKG_HTTPS_PROXY: ""
+# TKG_NO_PROXY: ""
+
+#! ---------------------------------------------------------------------
+#! Node configuration
+#! ---------------------------------------------------------------------
+
+AZURE_CONTROL_PLANE_MACHINE_TYPE: Standard_D2s_v3
+AZURE_NODE_MACHINE_TYPE: Standard_D2s_v3
+# OS_NAME: ""
+# OS_VERSION: ""
+# OS_ARCH: ""
+
+#! ---------------------------------------------------------------------
+#! Azure configuration
+#! ---------------------------------------------------------------------
+
+AZURE_ENVIRONMENT: AzurePublicCloud
+AZURE_TENANT_ID: 
+AZURE_SUBSCRIPTION_ID: 
+AZURE_CLIENT_ID: 
+AZURE_CLIENT_SECRET: 
+AZURE_LOCATION: 
+AZURE_SSH_PUBLIC_KEY_B64: 
+#AZURE_RESOURCE_GROUP: public-mgmt-cluster
+AZURE_VNET_RESOURCE_GROUP: tanzu
+AZURE_VNET_NAME: tanzu-vnet
+#AZURE_VNET_CIDR: 10.0.0.0/16
+AZURE_CONTROL_PLANE_SUBNET_NAME: control-plane-subnet
+#AZURE_CONTROL_PLANE_SUBNET_CIDR: 10.0.1.0/24
+AZURE_NODE_SUBNET_NAME: node-subnet
+#AZURE_NODE_SUBNET_CIDR: 10.0.2.0/24
+
+AZURE_ENABLE_PRIVATE_CLUSTER: false
+
+
+#! ---------------------------------------------------------------------
+#! Machine Health Check configuration
+#! ---------------------------------------------------------------------
+ENABLE_MHC: true
+MHC_UNKNOWN_STATUS_TIMEOUT: 5m
+MHC_FALSE_STATUS_TIMEOUT: 12m
+
+#! ---------------------------------------------------------------------
+#! Identity management configuration
+#! ---------------------------------------------------------------------
+
+IDENTITY_MANAGEMENT_TYPE: none
+
+#! Settings for Pinniped OIDC
+# CERT_DURATION: 2160h
+# CERT_RENEW_BEFORE: 360h
+# OIDC_IDENTITY_PROVIDER_ISSUER_URL:
+# OIDC_IDENTITY_PROVIDER_CLIENT_ID:
+# OIDC_IDENTITY_PROVIDER_CLIENT_SECRET:
+# OIDC_IDENTITY_PROVIDER_SCOPES: "email,profile,groups"
+# OIDC_IDENTITY_PROVIDER_USERNAME_CLAIM:
+# OIDC_IDENTITY_PROVIDER_GROUPS_CLAIM:
+
+#! The following two variables are used to configure Pinniped JWTAuthenticator for workload clusters
+# SUPERVISOR_ISSUER_URL:
+# SUPERVISOR_ISSUER_CA_BUNDLE_DATA:
+
+#! Settings for LDAP
+# LDAP_BIND_DN:
+# LDAP_BIND_PASSWORD:
+# LDAP_HOST:
+# LDAP_USER_SEARCH_BASE_DN:
+# LDAP_USER_SEARCH_FILTER:
+# LDAP_USER_SEARCH_USERNAME: userPrincipalName
+# LDAP_USER_SEARCH_ID_ATTRIBUTE: DN
+# LDAP_USER_SEARCH_EMAIL_ATTRIBUTE: DN
+# LDAP_USER_SEARCH_NAME_ATTRIBUTE:
+# LDAP_GROUP_SEARCH_BASE_DN:
+# LDAP_GROUP_SEARCH_FILTER:
+# LDAP_GROUP_SEARCH_USER_ATTRIBUTE: DN
+# LDAP_GROUP_SEARCH_GROUP_ATTRIBUTE:
+# LDAP_GROUP_SEARCH_NAME_ATTRIBUTE: cn
+# LDAP_ROOT_CA_DATA_B64:
+
+#! ---------------------------------------------------------------------
+#! Antrea CNI configuration
+#! ---------------------------------------------------------------------
+# ANTREA_NO_SNAT: false
+# ANTREA_TRAFFIC_ENCAP_MODE: "encap"
+# ANTREA_PROXY: false
+# ANTREA_POLICY: true
+# ANTREA_TRACEFLOW: false
