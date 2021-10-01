@@ -5,9 +5,12 @@
 1. Edit `terraform.tfvars` with your information
 1. Run `terraform plan`
 1. Run `terraform apply -auto-approve`
-1. Get the public IP of the Jump Server from the Azure portal
+1. The Public IP (PIP) of the Jump Server will be outputted
+1. You will have to obtain download links for the Tanzu CLI (Linux) and Kubectl from [My VMware](https://www.vmware.com/go/get-tkg)
+    * NOTE: You will have to download the files locally and use your browser's download history to obtain the links
 1. SSH into the Jump Server
-1. On the Jump Server, you will have sample TKG cluster config files in the directory `clusterconfigs`
+1. You will have to run `scripts/tanzu-install.sh` and provide the download links
+1. You will have to run sample TKG cluster config files in the directory `clusterconfigs`
 1. Edit the following fields in each cluster config file
 ```yaml
 AZURE_TENANT_ID: 
@@ -18,4 +21,4 @@ AZURE_LOCATION:
 AZURE_SSH_PUBLIC_KEY_B64: 
 ```
 
-Docker, kubectl, and the tanzu cli are all installed on the Jump Server.
+Docker, kubectl, and the tanzu cli will be installed on the Jump Server.
