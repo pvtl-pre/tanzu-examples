@@ -1,15 +1,15 @@
 resource "azurerm_public_ip" "jump-server" {
   name                = "jump-server-pip"
-  location            = azurerm_resource_group.resource-group.location
-  resource_group_name = azurerm_resource_group.resource-group.name
+  location            = azurerm_resource_group.tanzu-resource-group.location
+  resource_group_name = azurerm_resource_group.tanzu-resource-group.name
   allocation_method   = "Static"
   sku                 = "Standard"
 }
 
 resource "azurerm_network_interface" "jump-server-nic" {
   name                = "jump-server-nic"
-  location            = azurerm_resource_group.resource-group.location
-  resource_group_name = azurerm_resource_group.resource-group.name
+  location            = azurerm_resource_group.tanzu-resource-group.location
+  resource_group_name = azurerm_resource_group.tanzu-resource-group.name
 
   ip_configuration {
     name                          = "public"
@@ -21,8 +21,8 @@ resource "azurerm_network_interface" "jump-server-nic" {
 
 resource "azurerm_linux_virtual_machine" "jump-server" {
   name                = "jump-server"
-  resource_group_name = azurerm_resource_group.resource-group.name
-  location            = azurerm_resource_group.resource-group.location
+  resource_group_name = azurerm_resource_group.tanzu-resource-group.name
+  location            = azurerm_resource_group.tanzu-resource-group.location
   size                = "Standard_D2s_v3"
   admin_username      = var.azure_jump_server_username
   network_interface_ids = [
@@ -56,7 +56,7 @@ resource "azurerm_linux_virtual_machine" "jump-server" {
   provisioner "remote-exec" {
     inline = [
       "mkdir clusterconfigs",
-      "mkdir jump-server"
+      "mkdir scripts"
     ]
   }
 
@@ -66,24 +66,14 @@ resource "azurerm_linux_virtual_machine" "jump-server" {
   }
 
   provisioner "file" {
-    source      = "jump-server/"
-    destination = "jump-server"
+    source      = "jump-server-scripts/"
+    destination = "scripts"
   }
 
   provisioner "remote-exec" {
     inline = [
-      "chmod 755 jump-server/bootstrap1.sh",
-      "jump-server/bootstrap1.sh"
-    ]
-  }
-
-  provisioner "remote-exec" {
-    inline = [
-      "export VMWUSER='${var.myvmware_com_username}'",
-      "export VMWPASS='${nonsensitive(var.myvmware_com_password)}'",
-
-      "chmod 755 jump-server/bootstrap2.sh",
-      "jump-server/bootstrap2.sh",
+      "chmod 755 scripts/*.sh",
+      "scripts/docker-install.sh"
     ]
   }
 }

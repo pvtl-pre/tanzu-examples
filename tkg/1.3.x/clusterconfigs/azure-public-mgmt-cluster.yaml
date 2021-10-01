@@ -2,7 +2,7 @@
 #! Basic cluster creation configuration
 #! ---------------------------------------------------------------------
 
-CLUSTER_NAME: public-mgmt-cluster
+CLUSTER_NAME: mgmt-cluster
 CLUSTER_PLAN: dev
 INFRASTRUCTURE_PROVIDER: azure
 ENABLE_CEIP_PARTICIPATION: false
@@ -47,13 +47,13 @@ AZURE_CLIENT_ID:
 AZURE_CLIENT_SECRET: 
 AZURE_LOCATION: 
 AZURE_SSH_PUBLIC_KEY_B64: 
-#AZURE_RESOURCE_GROUP: public-mgmt-cluster
+#AZURE_RESOURCE_GROUP: mgmt-cluster
 AZURE_VNET_RESOURCE_GROUP: tanzu
 AZURE_VNET_NAME: tanzu-vnet
 #AZURE_VNET_CIDR: 10.0.0.0/16
 AZURE_CONTROL_PLANE_SUBNET_NAME: control-plane-subnet
 #AZURE_CONTROL_PLANE_SUBNET_CIDR: 10.0.1.0/24
-AZURE_NODE_SUBNET_NAME: node-subnet
+AZURE_NODE_SUBNET_NAME: mgmt-cluster-node-subnet
 #AZURE_NODE_SUBNET_CIDR: 10.0.2.0/24
 
 AZURE_ENABLE_PRIVATE_CLUSTER: false

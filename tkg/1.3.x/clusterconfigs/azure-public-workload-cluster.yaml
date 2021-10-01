@@ -2,7 +2,7 @@
 #! Cluster creation basic configuration
 #! ---------------------------------------------------------------------
 
-CLUSTER_NAME: public-workload-cluster
+CLUSTER_NAME: workload-cluster
 CLUSTER_PLAN: dev
 NAMESPACE: default
 CNI: antrea
@@ -22,6 +22,10 @@ AZURE_NODE_MACHINE_TYPE: "Standard_D2s_v3"
 # WORKER_MACHINE_COUNT_1:
 # WORKER_MACHINE_COUNT_2:
 
+# TBS Required Settings
+#AZURE_ENABLE_NODE_DATA_DISK: true
+#AZURE_NODE_DATA_DISK_SIZE_GIB: 128
+
 #! ---------------------------------------------------------------------
 #! Azure Configuration
 #! ---------------------------------------------------------------------
@@ -33,14 +37,14 @@ AZURE_CLIENT_ID:
 AZURE_CLIENT_SECRET: 
 AZURE_LOCATION: 
 AZURE_SSH_PUBLIC_KEY_B64: 
-#AZURE_RESOURCE_GROUP: public-workload-cluster
+#AZURE_RESOURCE_GROUP: workload-cluster
 AZURE_VNET_RESOURCE_GROUP: tanzu
 AZURE_VNET_NAME: tanzu-vnet
 #AZURE_VNET_CIDR: 10.0.0.0/16
 AZURE_CONTROL_PLANE_SUBNET_NAME: control-plane-subnet
 #AZURE_CONTROL_PLANE_SUBNET_CIDR: 10.0.1.0/24
-AZURE_NODE_SUBNET_NAME: node-subnet
-#AZURE_NODE_SUBNET_CIDR: 10.0.2.0/24
+AZURE_NODE_SUBNET_NAME: workload-cluster-node-subnet
+#AZURE_NODE_SUBNET_CIDR: 10.0.3.0/24
 
 AZURE_ENABLE_PRIVATE_CLUSTER: false
 

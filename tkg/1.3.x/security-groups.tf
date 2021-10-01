@@ -1,7 +1,7 @@
 resource "azurerm_network_security_group" "jump-server" {
-  name                = "jump-server-nsg"
-  location            = azurerm_resource_group.resource-group.location
-  resource_group_name = azurerm_resource_group.resource-group.name
+  name                = var.azure_jump_server_nsg_name
+  location            = azurerm_resource_group.tanzu-resource-group.location
+  resource_group_name = azurerm_resource_group.tanzu-resource-group.name
 
   security_rule {
     name                       = "allow_ssh"
@@ -17,9 +17,9 @@ resource "azurerm_network_security_group" "jump-server" {
 }
 
 resource "azurerm_network_security_group" "control-plane" {
-  name                = "control-plane-nsg"
-  location            = azurerm_resource_group.resource-group.location
-  resource_group_name = azurerm_resource_group.resource-group.name
+  name                = var.azure_control_plane_nsg_name
+  location            = azurerm_resource_group.tanzu-resource-group.location
+  resource_group_name = azurerm_resource_group.tanzu-resource-group.name
 
   security_rule {
     name                       = "allow_ssh"
@@ -46,9 +46,14 @@ resource "azurerm_network_security_group" "control-plane" {
   }
 }
 
-resource "azurerm_network_security_group" "node" {
-  name                = "node-nsg"
-  location            = azurerm_resource_group.resource-group.location
-  resource_group_name = azurerm_resource_group.resource-group.name
+resource "azurerm_network_security_group" "mgmt-cluster-node" {
+  name                = var.azure_mgmt_cluster_node_nsg_name
+  location            = azurerm_resource_group.mgmt-cluster-resource-group.location
+  resource_group_name = azurerm_resource_group.mgmt-cluster-resource-group.name
+}
 
+resource "azurerm_network_security_group" "workload-cluster-node" {
+  name                = var.azure_workload_cluster_node_nsg_name
+  location            = azurerm_resource_group.workload-cluster-resource-group.location
+  resource_group_name = azurerm_resource_group.workload-cluster-resource-group.name
 }

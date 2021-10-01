@@ -1,11 +1,11 @@
-variable "myvmware_com_username" {
-  type = string
+# Outputs
+
+output "azure_jump_server_pip" {
+  value       = azurerm_public_ip.jump-server.ip_address
+  description = "The public IP address of the jump server instance."
 }
 
-variable "myvmware_com_password" {
-  type      = string
-  sensitive = true
-}
+# Variables
 
 variable "azure_jump_server_username" {
   type = string
@@ -24,9 +24,19 @@ variable "azure_location" {
   default = "southcentralus"
 }
 
-variable "azure_resource_group" {
+variable "azure_tanzu_resource_group" {
   type    = string
   default = "tanzu"
+}
+
+variable "azure_mgmt_cluster_resource_group" {
+  type    = string
+  default = "mgmt-cluster"
+}
+
+variable "azure_workload_cluster_resource_group" {
+  type    = string
+  default = "workload-cluster"
 }
 
 variable "azure_vnet_name" {
@@ -49,6 +59,11 @@ variable "azure_jump_server_subnet_cidr" {
   default = "10.0.0.0/24"
 }
 
+variable "azure_jump_server_nsg_name" {
+  type    = string
+  default = "jump-server-nsg"
+}
+
 variable "azure_control_plane_subnet_name" {
   type    = string
   default = "control-plane-subnet"
@@ -59,12 +74,37 @@ variable "azure_control_plane_subnet_cidr" {
   default = "10.0.1.0/24"
 }
 
-variable "azure_node_subnet_name" {
+variable "azure_control_plane_nsg_name" {
   type    = string
-  default = "node-subnet"
+  default = "control-plane-nsg"
 }
 
-variable "azure_node_subnet_cidr" {
+variable "azure_mgmt_cluster_node_subnet_name" {
+  type    = string
+  default = "mgmt-cluster-node-subnet"
+}
+
+variable "azure_mgmt_cluster_node_subnet_cidr" {
   type    = string
   default = "10.0.2.0/24"
+}
+
+variable "azure_mgmt_cluster_node_nsg_name" {
+  type    = string
+  default = "mgmt-cluster-node-nsg"
+}
+
+variable "azure_workload_cluster_node_subnet_name" {
+  type    = string
+  default = "workload-cluster-node-subnet"
+}
+
+variable "azure_workload_cluster_node_subnet_cidr" {
+  type    = string
+  default = "10.0.3.0/24"
+}
+
+variable "azure_workload_cluster_node_nsg_name" {
+  type    = string
+  default = "workload-cluster-node-nsg"
 }
