@@ -31,3 +31,6 @@ override.tf.json
 
 .terraform.lock.hcl
 *.tfvars
+
+# Ignore localconfigs folders
+**/localconfigs/*
