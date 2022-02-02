@@ -33,4 +33,7 @@ override.tf.json
 *.tfvars
 
 # Ignore localconfigs folders
-**/localconfigs/*
+**/local-config/*
+
+# Ignore generated folders
+**/generated/*
