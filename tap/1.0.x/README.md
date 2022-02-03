@@ -1,4 +1,4 @@
-# Tanzu Application Platform
+# Tanzu Application Platform on Azure
 
 This repo has scripts to deploy Tanzu Application Platform to Azure.
 
