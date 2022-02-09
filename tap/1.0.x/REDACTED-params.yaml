@@ -24,6 +24,10 @@ tap_values:
     enable_automatic_dependency_updates: true
   supply_chain: basic
 
+  cnrs:
+    provider: local
+    domain_name: # set (i.e. cnrs.DOMAIN-NAME)
+
   ootb_supply_chain_basic:
     registry:
       server: # optional if registry is being created via script with a domain of azurecr.io
@@ -32,7 +36,7 @@ tap_values:
       ssh_secret: ""
 
   learningcenter:
-    ingressDomain: # set (i.e. "DOMAIN-NAME")
+    ingressDomain: # set (i.e. learningcenter.DOMAIN-NAME)
 
   tap_gui:
     service_type: ClusterIP
