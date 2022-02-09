@@ -6,6 +6,13 @@ This repo has scripts to deploy Tanzu Application Platform to Azure.
 
 This repo is for Tanzu field team members to see how various components of Tanzu Application Platform come together to build a modern application platform. We will highlight the developer experience improvements with an eye towards operator control of the software supply chain. This could be delivered as a presentation and demo or it could be extended to include having the audience actually deploy the full solution on their own Azure subscription.
 
+## Setup Tanzu Application Platform GUI catalog
+
+Tanzu Application Platform GUI Blank Catalog from the Tanzu Application section of [Tanzu Network](https://network.tanzu.vmware.com/products/tanzu-application-platform/).
+To install, navigate to Tanzu Network. Under the list of available files to download, there is a folder titled tap-gui-catalogs-latest. Inside that folder is a compressed archive titled Tanzu Application Platform GUI Blank Catalog. You must extract that catalog to the preceding Git repository of choice. This serves as the configuration location for your Organization’s Catalog inside Tanzu Application Platform GUI.
+
+Example: https://github.com/pvtl-pre/tap-gui-catalogs
+
 ## Required CLIs
 
 - [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
@@ -54,3 +61,5 @@ Execute the following script to tear down your environment.
 ```bash
 ./scripts/delete-all.sh
 ```
+
+## Troubleshooting Guide
