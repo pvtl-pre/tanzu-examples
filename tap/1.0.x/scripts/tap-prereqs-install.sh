@@ -17,7 +17,7 @@ if [[ "$JUMPBOX_OS" == 'OSX' ]]; then
   CLUSTER_ESSENTIALS_PRODUCT_FILE_ID=1105820
 
   TAP_FILE='tanzu-framework-darwin-amd64.tar'
-  TAP_FILE_PRODUCT_FILE_ID=1114446
+  TAP_FILE_PRODUCT_FILE_ID=1147346
 
   TANZU_CLI='tanzu-core-darwin_amd64'
 else
@@ -25,7 +25,7 @@ else
   CLUSTER_ESSENTIALS_PRODUCT_FILE_ID=1105818
 
   TAP_FILE='tanzu-framework-linux-amd64.tar'
-  TAP_FILE_PRODUCT_FILE_ID=1114447
+  TAP_FILE_PRODUCT_FILE_ID=1147349
 
   TANZU_CLI='tanzu-core-linux_amd64'
 fi
@@ -47,7 +47,7 @@ rm -rf generated/tanzu
 mkdir -p generated/tanzu
 
 if [[ ! -f "generated/$TAP_FILE" ]]; then
-  pivnet download-product-files --product-slug='tanzu-application-platform' --release-version='1.0.0' --product-file-id=$TAP_FILE_PRODUCT_FILE_ID --download-dir generated
+  pivnet download-product-files --product-slug='tanzu-application-platform' --release-version='1.0.1' --product-file-id=$TAP_FILE_PRODUCT_FILE_ID --download-dir generated
 fi
 
 tar -xvf generated/$TAP_FILE -C generated/tanzu
@@ -55,7 +55,7 @@ tar -xvf generated/$TAP_FILE -C generated/tanzu
 
 echo "## Installing Tanzu CLI"
 
-install generated/tanzu/cli/core/v0.10.0/$TANZU_CLI /usr/local/bin/tanzu
+install generated/tanzu/cli/core/v0.11.1/$TANZU_CLI /usr/local/bin/tanzu
 
 tanzu version
 
