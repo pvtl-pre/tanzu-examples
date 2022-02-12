@@ -9,27 +9,28 @@ RESOURCE_GROUP=$(yq e .azure.resource_group $PARAMS_YAML)
 CLUSTER_NAME=$(yq e .azure.aks_cluster_name $PARAMS_YAML)
 export KUBECONFIG="generated/kubeconfig.yaml"
 
-echo "## Checking providers Microsoft.OperationsManagement and Microsoft.OperationalInsights are registered"
+#echo "## Checking providers Microsoft.OperationsManagement and Microsoft.OperationalInsights are registered"
 
-OP_MAN_REGISTERED=$(az provider show -n Microsoft.OperationsManagement | jq -r '.registrationState')
+#OP_MAN_REGISTERED=$(az provider show -n Microsoft.OperationsManagement -o json | jq -r '.registrationState')
 
-if [[ "${OP_MAN_REGISTERED}" != 'registered' ]]; then
-  echo "## Registering provider Microsoft.OperationsManagement"
-  az provider register --namespace Microsoft.OperationsManagement
-fi
+#if [[ "${OP_MAN_REGISTERED}" != 'registered' ]]; then
+#  echo "## Registering provider Microsoft.OperationsManagement"
+#  az provider register --namespace Microsoft.OperationsManagement --wait
+#fi
 
-OP_INS_REGISTERED=$(az provider show -n Microsoft.OperationalInsights | jq -r '.registrationState')
+#OP_INS_REGISTERED=$(az provider show -n Microsoft.OperationalInsights -o json | jq -r '.registrationState')
 
-if [[ "${OP_MAN_REGISTERED}" != 'registered' ]]; then
-  echo "## Registering provider Microsoft.OperationalInsights"
-  az provider register --namespace Microsoft.OperationalInsights
-fi
+#if [[ "${OP_MAN_REGISTERED}" != 'registered' ]]; then
+#  echo "## Registering provider Microsoft.OperationalInsights"
+#  az provider register --namespace Microsoft.OperationalInsights --wait
+#fi
+
 
 CLUSTER_EXISTS=$(az aks list | jq ".[] | contains({name: \"$CLUSTER_NAME\"})")
 
 if [[ -z "${CLUSTER_EXISTS}" || "${CLUSTER_EXISTS}" == 'false' ]]; then
   echo "## Creating AKS cluster '$CLUSTER_NAME'"
-  az aks create --name $CLUSTER_NAME --resource-group $RESOURCE_GROUP --node-vm-size standard_a8_v2 --node-count 3
+  az aks create --name $CLUSTER_NAME --resource-group $RESOURCE_GROUP --node-vm-size standard_a8_v2 --node-count 4 --yes
 else
   echo "## AKS cluster '$CLUSTER_NAME' exists"
 fi
