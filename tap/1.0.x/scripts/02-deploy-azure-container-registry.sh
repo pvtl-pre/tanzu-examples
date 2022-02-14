@@ -16,7 +16,7 @@ if [[ -z "$ACR_NAME" || "$ACR_NAME" == "null" ]]; then
 
   CREATE_ACR=true
 else
-  ACR_EXISTS=$(az acr list | jq ".[] | contains({name: \"$ACR_NAME\"})")
+  ACR_EXISTS=$(az acr list -o json | jq ".[] | contains({name: \"$ACR_NAME\"})")
 
   if [[ -z "$ACR_EXISTS" || "$ACR_EXISTS" == 'false' ]]; then
     CREATE_ACR=true
@@ -24,7 +24,7 @@ else
 fi
 
 if [[ "$CREATE_ACR" == 'true' ]]; then
-  RETURNED_ACR_JSON=$(az acr check-name --name $ACR_NAME)
+  RETURNED_ACR_JSON=$(az acr check-name --name $ACR_NAME -o json)
   echo "INFO: RETURNED_ACR_JSON is $RETURNED_ACR_JSON"
 
   if [[ $(echo "$RETURNED_ACR_JSON" | jq -r '.nameAvailable') != "true" ]]; then
@@ -53,9 +53,15 @@ fi
 
 echo "## Getting Azure Container Registry creds"
 
-az acr update -n $ACR_NAME --admin-enabled true
+ACR_ADMIN_ENABLED=$(az acr show -n $ACR_NAME -o yaml | yq e .adminUserEnabled)
 
-RETURNED_ACR_CREDS_JSON=$(az acr credential show --name $ACR_NAME)
+if [[ "$ACR_ADMIN_ENABLED" == "false" ]]; then
+  echo "## Enabling admin on registry $ACR_NAME"
+  az acr update -n $ACR_NAME --admin-enabled true
+fi
+
+RETURNED_ACR_CREDS_JSON=$(az acr credential show --name $ACR_NAME -o json)
+
 export ACR_USERNAME=$(echo "$RETURNED_ACR_CREDS_JSON" | jq -r '.username')
 export ACR_PASSWORD=$(echo "$RETURNED_ACR_CREDS_JSON" | jq -r '.passwords[0].value')
 
