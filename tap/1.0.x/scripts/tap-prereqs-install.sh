@@ -55,6 +55,7 @@ tar -xvf generated/$TAP_FILE -C generated/tanzu
 
 echo "## Installing Tanzu CLI"
 
+export TANZU_CLI_NO_INIT=true
 install generated/tanzu/cli/core/v0.11.1/$TANZU_CLI /usr/local/bin/tanzu
 
 tanzu version
