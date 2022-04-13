@@ -41,7 +41,7 @@ tar -xvf generated/$CLUSTER_ESSENTIALS_FILE -C generated/tanzu-cluster-essential
 
 (
 cd generated/tanzu-cluster-essentials
-yes | KUBECONFIG=../../$KUBECONFIG ./install.sh
+KUBECONFIG=../../$KUBECONFIG ./install.sh --yes
 )
 
 echo "## Downloading and extracting 'tanzu-framework-bundle' from Tanzu Network"
@@ -59,7 +59,7 @@ tar -xvf generated/$TAP_FILE -C generated/tanzu
 echo "## Installing Tanzu CLI"
 
 export TANZU_CLI_NO_INIT=true
-install generated/tanzu/cli/core/v0.11.1/$TANZU_CLI /usr/local/bin/tanzu
+install generated/tanzu/cli/core/v0.11.2/$TANZU_CLI /usr/local/bin/tanzu
 
 tanzu version
 
