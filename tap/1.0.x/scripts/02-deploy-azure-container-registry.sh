@@ -25,7 +25,6 @@ fi
 
 if [[ "$CREATE_ACR" == 'true' ]]; then
   RETURNED_ACR_JSON=$(az acr check-name --name $ACR_NAME -o json)
-  echo "INFO: RETURNED_ACR_JSON is $RETURNED_ACR_JSON"
 
   if [[ $(echo "$RETURNED_ACR_JSON" | jq -r '.nameAvailable') != "true" ]]; then
     echo "Azure Container Registry name $ACR_NAME is not available"
