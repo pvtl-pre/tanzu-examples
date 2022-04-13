@@ -4,7 +4,7 @@
 ```json
 {
   "projectName" : "tanzu-java-web-app",
-  "repositoryPrefix" : "tapregistry20220209113837.azurecr.io/apps"
+  "repositoryPrefix" : "dev.local"
 }
 ```
 ## Log
@@ -23,6 +23,7 @@
 ┃ ┃ ┃ ┃  Info Running Chain(Include, Exclude)
 ┃ ┃ ┃ ┃ ┏ engine.transformations[0].merge.transformations[0].sources[0].<combo>.transformations[0] (Include)
 ┃ ┃ ┃ ┃ ┃  Info Will include [**/*]
+┃ ┃ ┃ ┃ ┃ Debug .github/workflows/code-scan.yml matched [**/*] -> included
 ┃ ┃ ┃ ┃ ┃ Debug .gitignore matched [**/*] -> included
 ┃ ┃ ┃ ┃ ┃ Debug .mvn/wrapper/MavenWrapperDownloader.java matched [**/*] -> included
 ┃ ┃ ┃ ┃ ┃ Debug .mvn/wrapper/maven-wrapper.jar matched [**/*] -> included
@@ -41,6 +42,7 @@
 ┃ ┃ ┃ ┃ ┗ Debug src/test/java/com/example/springboot/HelloControllerTest.java matched [**/*] -> included
 ┃ ┃ ┃ ┃ ┏ engine.transformations[0].merge.transformations[0].sources[0].<combo>.transformations[1] (Exclude)
 ┃ ┃ ┃ ┃ ┃  Info Will exclude [config/*.yaml, Tiltfile, README.md, catalog/*.yaml]
+┃ ┃ ┃ ┃ ┃ Debug .github/workflows/code-scan.yml didn't match [config/*.yaml, Tiltfile, README.md, catalog/*.yaml] -> included
 ┃ ┃ ┃ ┃ ┃ Debug .gitignore didn't match [config/*.yaml, Tiltfile, README.md, catalog/*.yaml] -> included
 ┃ ┃ ┃ ┃ ┃ Debug .mvn/wrapper/MavenWrapperDownloader.java didn't match [config/*.yaml, Tiltfile, README.md, catalog/*.yaml] -> included
 ┃ ┃ ┃ ┃ ┃ Debug .mvn/wrapper/maven-wrapper.jar didn't match [config/*.yaml, Tiltfile, README.md, catalog/*.yaml] -> included
@@ -63,6 +65,7 @@
 ┃ ┃ ┃ ┃  Info Running Chain(Include, Chain)
 ┃ ┃ ┃ ┃ ┏ engine.transformations[0].merge.transformations[0].sources[1].<combo>.transformations[0] (Include)
 ┃ ┃ ┃ ┃ ┃  Info Will include [config/*.yaml, Tiltfile]
+┃ ┃ ┃ ┃ ┃ Debug .github/workflows/code-scan.yml didn't match [config/*.yaml, Tiltfile] -> excluded
 ┃ ┃ ┃ ┃ ┃ Debug .gitignore didn't match [config/*.yaml, Tiltfile] -> excluded
 ┃ ┃ ┃ ┃ ┃ Debug .mvn/wrapper/MavenWrapperDownloader.java didn't match [config/*.yaml, Tiltfile] -> excluded
 ┃ ┃ ┃ ┃ ┃ Debug .mvn/wrapper/maven-wrapper.jar didn't match [config/*.yaml, Tiltfile] -> excluded
@@ -84,13 +87,14 @@
 ┃ ┃ ┃ ┃ ┃ ┏ engine.transformations[0].merge.transformations[0].sources[1].<combo>.transformations[1].transformations[0] (ReplaceText)
 ┃ ┃ ┃ ┃ ┃ ┗  Info Will replace [tanzu-java-web-app->tanzu-java-web-app]
 ┃ ┃ ┃ ┃ ┃ ┏ engine.transformations[0].merge.transformations[0].sources[1].<combo>.transformations[1].transformations[1] (ReplaceText)
-┃ ┃ ┃ ┗ ┗ ┗  Info Will replace [your-registry.io/project->tapregistry202202091...(truncated)]
+┃ ┃ ┃ ┗ ┗ ┗  Info Will replace [your-registry.io/project->dev.local]
 ┃ ┃ ┃ ┏ engine.transformations[0].merge.transformations[0].sources[2] (Combo)
 ┃ ┃ ┃ ┃  Info Combo running as Chain(Include, Chain(chain))
 ┃ ┃ ┃ ┃ engine.transformations[0].merge.transformations[0].sources[2].<combo> (Chain)
 ┃ ┃ ┃ ┃  Info Running Chain(Include, Chain)
 ┃ ┃ ┃ ┃ ┏ engine.transformations[0].merge.transformations[0].sources[2].<combo>.transformations[0] (Include)
 ┃ ┃ ┃ ┃ ┃  Info Will include [README.md]
+┃ ┃ ┃ ┃ ┃ Debug .github/workflows/code-scan.yml didn't match [README.md] -> excluded
 ┃ ┃ ┃ ┃ ┃ Debug .gitignore didn't match [README.md] -> excluded
 ┃ ┃ ┃ ┃ ┃ Debug .mvn/wrapper/MavenWrapperDownloader.java didn't match [README.md] -> excluded
 ┃ ┃ ┃ ┃ ┃ Debug .mvn/wrapper/maven-wrapper.jar didn't match [README.md] -> excluded
@@ -117,6 +121,7 @@
 ┃ ┃ ┃ ┃  Info Running Chain(Include, Chain)
 ┃ ┃ ┃ ┃ ┏ engine.transformations[0].merge.transformations[0].sources[3].<combo>.transformations[0] (Include)
 ┃ ┃ ┃ ┃ ┃  Info Will include [catalog/*.yaml]
+┃ ┃ ┃ ┃ ┃ Debug .github/workflows/code-scan.yml didn't match [catalog/*.yaml] -> excluded
 ┃ ┃ ┃ ┃ ┃ Debug .gitignore didn't match [catalog/*.yaml] -> excluded
 ┃ ┃ ┃ ┃ ┃ Debug .mvn/wrapper/MavenWrapperDownloader.java didn't match [catalog/*.yaml] -> excluded
 ┃ ┃ ┃ ┃ ┃ Debug .mvn/wrapper/maven-wrapper.jar didn't match [catalog/*.yaml] -> excluded
