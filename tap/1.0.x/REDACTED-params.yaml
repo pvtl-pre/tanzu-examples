@@ -20,7 +20,7 @@ tap_values:
     kp_default_repository_password: # will be automatically set with admin password
     tanzunet_username: # set
     tanzunet_password: # set
-    descriptor_name: "tap-1.0.0-full" # for lite install, use "tap-1.0.0-lite"
+    descriptor_name: "lite" # for full install, use "full"
     enable_automatic_dependency_updates: true
   supply_chain: basic
 
