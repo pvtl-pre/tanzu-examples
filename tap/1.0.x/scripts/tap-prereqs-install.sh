@@ -50,7 +50,7 @@ rm -rf generated/tanzu
 mkdir -p generated/tanzu
 
 if [[ ! -f "generated/$TAP_FILE" ]]; then
-  pivnet download-product-files --product-slug='tanzu-application-platform' --release-version='1.1.0-build.17' --product-file-id=$TAP_FILE_PRODUCT_FILE_ID --download-dir generated
+  pivnet download-product-files --product-slug='tanzu-application-platform' --release-version='1.1.0' --product-file-id=$TAP_FILE_PRODUCT_FILE_ID --download-dir generated
 fi
 
 tar -xvf generated/$TAP_FILE -C generated/tanzu
