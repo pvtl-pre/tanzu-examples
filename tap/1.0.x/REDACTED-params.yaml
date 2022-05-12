@@ -7,6 +7,7 @@ azure:
   acr_sku: standard
 tap_install:
   bundle: "registry.tanzu.vmware.com/tanzu-cluster-essentials/cluster-essentials-bundle@sha256:ab0a3539da241a6ea59c75c0743e9058511d7c56312ea3906178ec0f3491f51d"
+  dev_namespace: default
   registry:
     hostname: "registry.tanzu.vmware.com"
     username: # set
