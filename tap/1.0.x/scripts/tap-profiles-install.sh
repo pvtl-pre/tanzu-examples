@@ -22,7 +22,7 @@ tanzu secret registry add tap-registry \
   --export-to-all-namespaces --yes --namespace tap-install
 
 tanzu package repository add tanzu-tap-repository \
-  --url registry.tanzu.vmware.com/tanzu-application-platform/tap-packages:1.1.0-build.17 \
+  --url registry.tanzu.vmware.com/tanzu-application-platform/tap-packages:1.1.0 \
   --namespace tap-install
 
 tanzu package repository get tanzu-tap-repository --namespace tap-install
@@ -31,10 +31,10 @@ tanzu package available list --namespace tap-install
 
 if [[ -z $(tanzu package installed list -n tap-install -o yaml | yq '.[] | select(.name == "tap")') ]]; then
   echo "## Installing a Tanzu Application Platform profile"
-  tanzu package install tap -p tap.tanzu.vmware.com -v 1.1.0-build.17 --values-file $TAP_VALUES_FILE -n tap-install
+  tanzu package install tap -p tap.tanzu.vmware.com -v 1.1.0 --values-file $TAP_VALUES_FILE -n tap-install
 else
   echo "## Updating a Tanzu Application Platform profile"
-  tanzu package installed update tap -p tap.tanzu.vmware.com -v 1.1.0-build.17 --values-file $TAP_VALUES_FILE -n tap-install
+  tanzu package installed update tap -p tap.tanzu.vmware.com -v 1.1.0 --values-file $TAP_VALUES_FILE -n tap-install
 fi
 
 tanzu package installed get tap -n tap-install
