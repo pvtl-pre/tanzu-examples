@@ -10,7 +10,7 @@ INSTALL_DEV_NAMESPACE=$(yq e .tap_install.dev_namespace $PARAMS_YAML)
 
 echo "## Add read/write registry credentials to the developer namespace"
 
-tanzu secret registry add registry-credentials --server $INSTALL_REGISTRY_HOSTNAME --username $INSTALL_REGISTRY_USERNAME --password INSTALL_REGISTRY_PASSWORD --namespace $INSTALL_DEV_NAMESPACE
+tanzu secret registry add registry-credentials --server $INSTALL_REGISTRY_HOSTNAME --username $INSTALL_REGISTRY_USERNAME --password $INSTALL_REGISTRY_PASSWORD --namespace $INSTALL_DEV_NAMESPACE
 
 echo "## Authorize the service account to the developer namespace ($INSTALL_DEV_NAMESPACE)"
 
