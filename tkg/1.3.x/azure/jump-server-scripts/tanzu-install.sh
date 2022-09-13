@@ -23,10 +23,11 @@ tar -xvf tanzu-cli-bundle.tar
 sudo install cli/core/v*/tanzu* /usr/local/bin/tanzu
 
 tanzu plugin clean
-tanzu plugin install --local cli all
+tanzu plugin sync
 tanzu plugin list
 
 # autocomplete
+mkdir .tanzu
 tanzu completion bash > $HOME/.tanzu/completion.bash.inc
 printf "\n# Tanzu shell completion\nsource '$HOME/.tanzu/completion.bash.inc'\n" >> $HOME/.bash_profile
 
