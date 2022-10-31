@@ -48,12 +48,12 @@ resource "azurerm_network_security_group" "control-plane" {
 
 resource "azurerm_network_security_group" "mgmt-cluster-node" {
   name                = var.azure_mgmt_cluster_node_nsg_name
-  location            = azurerm_resource_group.mgmt-cluster-resource-group.location
-  resource_group_name = azurerm_resource_group.mgmt-cluster-resource-group.name
+  location            = azurerm_resource_group.tanzu-resource-group.location
+  resource_group_name = azurerm_resource_group.tanzu-resource-group.name
 }
 
 resource "azurerm_network_security_group" "workload-cluster-node" {
   name                = var.azure_workload_cluster_node_nsg_name
-  location            = azurerm_resource_group.workload-cluster-resource-group.location
-  resource_group_name = azurerm_resource_group.workload-cluster-resource-group.name
+  location            = azurerm_resource_group.tanzu-resource-group.location
+  resource_group_name = azurerm_resource_group.tanzu-resource-group.name
 }

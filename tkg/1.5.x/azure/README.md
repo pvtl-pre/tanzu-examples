@@ -1,4 +1,4 @@
-# Tanzu Kubernetes Grid 1.3.x on Azure
+# Tanzu Kubernetes Grid 1.5.x on Azure
 
 ## Setup Jump Server
 
