@@ -4,12 +4,12 @@ A simpification of the install process for greenfield environments in order for 
 
 ## Tanzu Application Platform Examples
 
-| Version | Environment |                                       |
-|---------|-------------|---------------------------------------|
-| 1.0.x   | Azure       | [Readme](./tap/1.0.x/README.md)       |
+| Environment |                                       |
+|-------------|---------------------------------------|
+| Azure       | [Readme](./tap/azure/README.md)       |
 
 ## Tanzu Kubernetes Grid Examples
 
-| Version | Environment |                                       |
-|---------|-------------|---------------------------------------|
-| 1.5.x   | Azure       | [Readme](./tkg/1.5.x/azure/README.md) |
+| Environment |                                       |
+|-------------|---------------------------------------|
+| Azure       | [Readme](./tkg/azure/README.md)       |
